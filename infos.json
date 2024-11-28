@@ -1,0 +1,10 @@
+{
+    "infos":{
+        "BROKER":"vfc-mqtt-prod.starter.eu-central.external.mindsphere.io",
+        "PORT":8883,
+        "TOPIC":"vfc/debr/MQTTV4/mensagem",
+        "USERNAME":"MQTTV4",
+        "PASSWORD":"Siemens#1234",
+        "CLIENT_ID":"debr/MQTTV4-id"
+    }   
+}

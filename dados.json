@@ -1,0 +1,57 @@
+{
+    "id": "20100e13-d3ff-4729-b803-255989f7b3ae",
+    "data": {
+        "typeModel": {
+            "aspectTypes": [
+                {
+                    "id": "tenant.a",
+                    "name": "a",
+                    "description": "a",
+                    "category": "dynamic",
+                    "referenceId": "aReferenceId",
+                    "variables": [
+                        {
+                            "name": "a",
+                            "dataType": "a",
+                            "qualityCode": true,
+                            "unit": "a",
+                            "searchable": false,
+                            "referenceId": "aReferenceId"
+                        }
+                    ]
+                }
+            ],
+            "assetTypes": [
+                {
+                    "id": "tenant.a",
+                    "name": "a",
+                    "description": "a",
+                    "parentTypeId": "core.basicasset",
+                    "variables": [],
+                    "referenceId": "aReferenceId",
+                    "aspects": [
+                        {
+                            "name": "a",
+                            "aspectTypeId": "tenant.a",
+                            "referenceId": "aReferenceId"
+                        }
+                    ]
+                }
+            ]
+        },
+        "instanceModel": {
+            "assets": [
+                {
+                    "name": "a",
+                    "typeId": "tenant.a",
+                    "parentReferenceId": "e67bd43eccf94502b9679747b0d682dc",
+                    "description": "",
+                    "referenceId": "aReferenceId"
+                }
+            ]
+        },
+        "mappingModel": {
+            "mappings": []
+        }
+    }
+}
