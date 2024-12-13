@@ -1,44 +1,77 @@
 {
-    "id": "9c23e89d-eb1c-4774-9381-2139693bedab",
+    "id": "e83d5991-3263-4d31-952b-230e6314fdb8",
     "data": {
         "typeModel": {
             "aspectTypes": [
                 {
-                    "id": "TENANT_ID.ASPECT1",
-                    "name": "ASPECT1",
-                    "description": "DESC",
+                    "id": "debr.mecanico",
+                    "name": "mecanico",
+                    "description": "mecanico",
                     "category": "dynamic",
-                    "referenceId": "ASPECT1ReferenceId",
+                    "referenceId": "mecanicoReferenceId",
                     "variables": [
                         {
-                            "name": "VAR",
+                            "name": "velocidade",
                             "dataType": "INT",
                             "qualityCode": true,
-                            "unit": "C",
+                            "unit": "m/s",
                             "searchable": false,
-                            "referenceId": "VARReferenceId"
+                            "referenceId": "velocidadeReferenceId"
+                        },
+                        {
+                            "name": "rpm",
+                            "dataType": "DOUBLE",
+                            "qualityCode": true,
+                            "unit": "rpm",
+                            "searchable": false,
+                            "referenceId": "rpmReferenceId"
+                        }
+                    ]
+                },
+                {
+                    "id": "debr.eletrico",
+                    "name": "eletrico",
+                    "description": "eletrico",
+                    "category": "dynamic",
+                    "referenceId": "eletricoReferenceId",
+                    "variables": [
+                        {
+                            "name": "corrente",
+                            "dataType": "INT",
+                            "qualityCode": true,
+                            "unit": "watts",
+                            "searchable": false,
+                            "referenceId": "correnteReferenceId"
+                        },
+                        {
+                            "name": "tempo_de_operacao",
+                            "dataType": "TIMESTAMP",
+                            "qualityCode": true,
+                            "unit": "",
+                            "searchable": false,
+                            "referenceId": "tempo_de_operacaoReferenceId"
                         }
                     ]
                 }
             ],
             "assetTypes": [
                 {
-                    "id": "TENANT_ID.TYPE1",
-                    "name": "TYPE1",
-                    "description": "TYPE",
+                    "id": "debr.TypeMecanicoEEletrico",
+                    "name": "TypeMecanicoEEletrico",
+                    "description": "type",
                     "parentTypeId": "core.basicasset",
                     "variables": [],
-                    "referenceId": "TYPE1ReferenceId",
+                    "referenceId": "TypeMecanicoEEletricoReferenceId",
                     "aspects": [
                         {
-                            "name": "ASPECT1",
-                            "aspectTypeId": "TENANT_ID.ASPECT1",
-                            "referenceId": "ASPECT1ReferenceId"
+                            "name": "mecanico",
+                            "aspectTypeId": "debr.mecanico",
+                            "referenceId": "mecanicoReferenceId"
                         },
                         {
-                            "name": "ASPECT1",
-                            "aspectTypeId": "TENANT_ID.ASPECT1",
-                            "referenceId": "ASPECT1ReferenceId"
+                            "name": "eletrico",
+                            "aspectTypeId": "debr.eletrico",
+                            "referenceId": "eletricoReferenceId"
                         }
                     ]
                 }
@@ -47,16 +80,45 @@
         "instanceModel": {
             "assets": [
                 {
-                    "name": "ASSET1",
-                    "typeId": "TENANT_ID.TYPE1",
+                    "name": "AssetMecacnicoEEletrico",
+                    "typeId": "debr.TypeMecanicoEEletrico",
                     "parentReferenceId": "e67bd43eccf94502b9679747b0d682dc",
                     "description": "",
-                    "referenceId": "ASSET1ReferenceId"
+                    "referenceId": "AssetMecacnicoEEletricoReferenceId"
                 }
             ]
         },
         "mappingModel": {
-            "mappings": []
+            "mappings": [
+                {
+                    "aspectName": "mecanico",
+                    "variableName": "velocidade",
+                    "dataPointId": "dataPoint1",
+                    "assetReferenceId": "AssetMecacnicoEEletricoReferenceId",
+                    "referenceId": "dataPoint1ReferenceId"
+                },
+                {
+                    "aspectName": "mecanico",
+                    "variableName": "rpm",
+                    "dataPointId": "dataPoint2",
+                    "assetReferenceId": "AssetMecacnicoEEletricoReferenceId",
+                    "referenceId": "dataPoint2ReferenceId"
+                },
+                {
+                    "aspectName": "eletrico",
+                    "variableName": "corrente",
+                    "dataPointId": "dataPoint3",
+                    "assetReferenceId": "AssetMecacnicoEEletricoReferenceId",
+                    "referenceId": "dataPoint3ReferenceId"
+                },
+                {
+                    "aspectName": "eletrico",
+                    "variableName": "tempo_de_operacao",
+                    "dataPointId": "dataPoint4",
+                    "assetReferenceId": "AssetMecacnicoEEletricoReferenceId",
+                    "referenceId": "dataPoint4ReferenceId"
+                }
+            ]
         }
     }
 }

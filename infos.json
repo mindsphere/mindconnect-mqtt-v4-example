@@ -2,7 +2,7 @@
     "infos":{
         "BROKER":"mindconnectmqtt.eu1.mindsphere.io",
         "PORT":8883,
-        "TOPIC_PUB":"tc/debr/debr_MQTTPython/o/amo_v4/m",
+        "TOPIC_PUB":"tc/debr/debr_MQTTPython/o/amo_v4/mi",
         "TOPIC_SUB":"tc/debr/debr_MQTTPython/i/amo_v4/#",
         "USERNAME":"debr/MQTTV4",
         "PASSWORD":"Siemens#1234",
