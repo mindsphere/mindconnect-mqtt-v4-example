@@ -1,0 +1,62 @@
+{
+    "id": "9c23e89d-eb1c-4774-9381-2139693bedab",
+    "data": {
+        "typeModel": {
+            "aspectTypes": [
+                {
+                    "id": "TENANT_ID.ASPECT1",
+                    "name": "ASPECT1",
+                    "description": "DESC",
+                    "category": "dynamic",
+                    "referenceId": "ASPECT1ReferenceId",
+                    "variables": [
+                        {
+                            "name": "VAR",
+                            "dataType": "INT",
+                            "qualityCode": true,
+                            "unit": "C",
+                            "searchable": false,
+                            "referenceId": "VARReferenceId"
+                        }
+                    ]
+                }
+            ],
+            "assetTypes": [
+                {
+                    "id": "TENANT_ID.TYPE1",
+                    "name": "TYPE1",
+                    "description": "TYPE",
+                    "parentTypeId": "core.basicasset",
+                    "variables": [],
+                    "referenceId": "TYPE1ReferenceId",
+                    "aspects": [
+                        {
+                            "name": "ASPECT1",
+                            "aspectTypeId": "TENANT_ID.ASPECT1",
+                            "referenceId": "ASPECT1ReferenceId"
+                        },
+                        {
+                            "name": "ASPECT1",
+                            "aspectTypeId": "TENANT_ID.ASPECT1",
+                            "referenceId": "ASPECT1ReferenceId"
+                        }
+                    ]
+                }
+            ]
+        },
+        "instanceModel": {
+            "assets": [
+                {
+                    "name": "ASSET1",
+                    "typeId": "TENANT_ID.TYPE1",
+                    "parentReferenceId": "e67bd43eccf94502b9679747b0d682dc",
+                    "description": "",
+                    "referenceId": "ASSET1ReferenceId"
+                }
+            ]
+        },
+        "mappingModel": {
+            "mappings": []
+        }
+    }
+}

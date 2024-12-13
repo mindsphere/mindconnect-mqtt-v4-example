@@ -3,17 +3,25 @@ import tkinter as tk
 from tkinter import messagebox, simpledialog
 import paho.mqtt.client as mqtt
 import uuid
+import os
 
 # Carregar informações do arquivo JSON
-with open('infos.json', 'r') as json_file:
+with open('mqttv4\infos.json', 'r') as json_file:
     infos = json.load(json_file)["infos"]
 
-BROKER = infos['BROKER']
+BROKER = infos['BROKER'].replace("mqtts://", "")  # Remove o prefixo do protocolo
 PORT = infos['PORT']
 TOPIC = infos['TOPIC']
 USERNAME = infos['USERNAME']
 PASSWORD = infos['PASSWORD']
 CLIENT_ID = infos['CLIENT_ID']
+TENANT_ID = infos['TENANT_ID']
+
+# Caminhos para os certificados
+CERT_PATH = "mqttv4/certs/"
+CA_CERT = os.path.join(CERT_PATH, "DigiCertGlobalRootG2.crt.pem")
+CLIENT_CERT = os.path.join(CERT_PATH, "debr_MQTTPython.pem")
+CLIENT_KEY = os.path.join(CERT_PATH, "debr_MQTTPython.key")
 
 # Dados iniciais
 data_model = {
@@ -34,16 +42,25 @@ data_model = {
 
 # Funções MQTT
 def on_connect(client, userdata, flags, rc):
-    print(f'Conectado ao broker MQTT com código {rc}')
-    client.subscribe(TOPIC)
+    if rc == 0:
+        print('Conectado ao broker MQTT com sucesso.')
+        client.subscribe(TOPIC)
+    else:
+        print(f'Falha na conexão com o broker. Código de retorno: {rc}')
 
 def on_message(client, userdata, msg):
     print(f'Mensagem recebida: {msg.payload.decode()}')
 
 client = mqtt.Client(client_id=CLIENT_ID, protocol=mqtt.MQTTv311)
+
+# Configuração de autenticação e TLS
 client.username_pw_set(USERNAME, PASSWORD)
+client.tls_set(ca_certs=CA_CERT, certfile=CLIENT_CERT, keyfile=CLIENT_KEY)
+client.tls_insecure_set(False)  # Verifica o hostname do certificado
+
 client.on_connect = on_connect
 client.on_message = on_message
+
 client.connect(BROKER, PORT, 60)
 
 # Funções para manipular o JSON
@@ -67,7 +84,7 @@ def adicionar_aspect():
                 "referenceId": f"{var_name}ReferenceId"
             })
         aspect = {
-            "id": f"tenant.{aspect_id}",
+            "id": f"TENANT_ID.{aspect_id}",
             "name": aspect_id,
             "description": description,
             "category": "dynamic",
@@ -96,7 +113,7 @@ def adicionar_type():
             else:
                 messagebox.showinfo("Erro", "Aspect não encontrado.")
         asset_type = {
-            "id": f"tenant.{type_id}",
+            "id": f"TENANT_ID.{type_id}",
             "name": type_id,
             "description": description,
             "parentTypeId": "core.basicasset",
@@ -126,7 +143,7 @@ def adicionar_asset():
             messagebox.showinfo("Erro", "Type não encontrado.")
 
 def atualizar_json():
-    with open('dados.json', 'w') as json_file:
+    with open('mqttv4\dados.json', 'w') as json_file:
         json.dump(data_model, json_file, indent=4)
     print("JSON atualizado.")
 
@@ -135,7 +152,7 @@ def enviar_mensagem():
     print("Mensagem enviada via MQTT.")
 
 def visualizar_json():
-    with open('dados.json', 'r') as json_file:
+    with open('mqttv4\dados.json', 'r') as json_file:
         preview = json.load(json_file)
     preview_window = tk.Toplevel(root)
     preview_window.title("Preview do JSON")
