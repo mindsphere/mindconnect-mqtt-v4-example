@@ -1,4 +1,118 @@
+# EN-US 🇺🇸
 
+# JSON Editor and Publisher via MQTT
+
+## 📋 Project Description
+
+This project is an interactive Python application that enables the creation, editing, and management of complex **JSONs** based on a hierarchical structure, including aspects, types, and assets. It also allows the sending of the generated **JSON** to an **MQTT** broker with TLS certificate authentication, and viewing messages received from a subscribed topic.
+
+## 🔧 Features
+
+### Main Features:
+1. **JSON Management**:
+   - Add, edit, and view aspects, types, and assets.
+   - Automatic configuration of mappings in the `mappingModel` field.
+
+2. **MQTT Connection**:
+   - Connect to a secure MQTT broker with username/password and TLS certificates.
+   - Send messages to an MQTT topic.
+   - Subscribe and receive messages from an MQTT topic.
+
+3. **User-Friendly Graphical Interface**:
+   - Developed in **Tkinter** to facilitate use.
+   - Intuitive buttons for each action.
+
+## 🚀 Technologies Used
+
+- **Python**:
+  - [Tkinter](https://docs.python.org/3/library/tkinter.html): Graphical interface.
+  - [paho-mqtt](https://www.eclipse.org/paho/): MQTT connection.
+  - [JSON](https://docs.python.org/3/library/json.html): JSON data manipulation.
+- **MQTT with TLS**: Additional security for communication.
+
+## 📂 Project Structure
+
+```
+project/
+├── mqtt_handler.py      # Manages MQTT connection logic
+├── interface.py         # Manages the graphical interface and JSON manipulation
+├── infos.json           # MQTT connection settings
+├── data.json            # Output file with the generated JSON
+├── mqttv4/certs/        # TLS Certificates
+│   ├── ca.pem           # CA Certificate
+│   ├── client.pem       # Client Certificate
+│   └── client.key       # Private key of the client
+```
+
+## 🛠️ Environment Setup
+
+### Prerequisites:
+- Python 3.8 or higher.
+- Install the necessary libraries:
+  ```bash
+  pip install paho-mqtt
+  ```
+
+### Configuration of `infos.json`:
+Edit the `infos.json` file to include your MQTT broker information:
+```json
+{
+    "infos": {
+        "BROKER": "mqtts://your-broker-here.com",
+        "PORT": 8883,
+        "TOPIC": "your/publish/topic",
+        "TOPIC_SUB": "your/subscription/topic",
+        "USERNAME": "your-username",
+        "PASSWORD": "your-password",
+        "CLIENT_ID": "your-client-id"
+    }
+}
+```
+
+## 📋 Usage Instructions
+
+### 1. Configure Tenant
+- Click on the **"Configure Tenant"** button and enter the tenant name
+
+### 2. Add Aspects
+- Click on **"Add Aspect"**.
+- Fill in the ID, description, and the variables associated with the aspect (name, type, and unit).
+
+### 3. Add Types (Types)
+- Click on **"Add Type"**.
+- Fill in the ID, description, and associate previously created aspects with the type.
+
+### 4. Add Assets (Assets)
+- Click on **"Add Asset"**.
+- Fill in the asset name and select an existing type.
+
+### 5. Generate Mappings
+- Click on **"Generate Mappings"**.
+- The system automatically associates the variables of the aspects with the assets.
+
+### 6. View JSON
+- Click on **"View JSON"** to check the current structure.
+
+### 7. Send Message
+- Click on **"Send Message"** to publish the JSON on the configured topic.
+
+## 🔒 Security
+
+This project uses:
+- **TLS 1.2** to ensure security in communication.
+- **`.pem`** certificates for authentication.
+
+## 🐞 Troubleshooting
+
+1. **MQTT Connection Error**:
+   - Check the `BROKER`, `PORT`, `USERNAME` and `PASSWORD` in `infos.json`.
+   - Ensure that the certificates in the `mqttv4/certs/` directory are valid.
+
+2. **Error Generating Mappings**:
+   - Make sure that there are correctly configured aspects, types, and assets before generating mappings.
+-----------------------------------------------------------------------------------------------------------------------------------
+
+# PT-BR 🇧🇷
 # Editor e Publicador de JSON via MQTT
 
 ## 📋 Descrição do Projeto
