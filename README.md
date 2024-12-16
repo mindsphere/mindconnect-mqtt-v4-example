@@ -109,9 +109,3 @@ Este projeto usa:
 
 2. **Erro ao Gerar Mapeamentos**:
    - Certifique-se de que há aspectos, tipos e ativos corretamente configurados antes de gerar os mapeamentos.
-
-## 📬 Contato
-
-Se você tiver dúvidas ou sugestões, entre em contato:
-- **Nome**: Augusto
-- **E-mail**: augusto.de-santana@exemplo.com
