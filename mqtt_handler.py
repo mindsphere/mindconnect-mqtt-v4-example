@@ -3,7 +3,7 @@ import paho.mqtt.client as mqtt
 import os
 
 # Carregar informações do arquivo JSON
-with open('infos.json', 'r') as json_file:
+with open('mqttv4\infos.json', 'r') as json_file:
     infos = json.load(json_file)["infos"]
 
 BROKER = infos['BROKER'].replace("mqtts://", "")
@@ -14,7 +14,7 @@ PASSWORD = infos['PASSWORD']
 CLIENT_ID = infos['CLIENT_ID']
 TOPIC_SUB = infos['TOPIC_SUB']
 
-CERT_PATH = "certs/"
+CERT_PATH = "mqttv4\certs/"
 CA_CERT = os.path.join(CERT_PATH, "DigiCertGlobalRootG2.crt.pem")
 CLIENT_CERT = os.path.join(CERT_PATH, "debr_MQTTPython.pem")
 CLIENT_KEY = os.path.join(CERT_PATH, "debr_MQTTPython.key")

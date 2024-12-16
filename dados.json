@@ -1,77 +1,39 @@
 {
-    "id": "e83d5991-3263-4d31-952b-230e6314fdb8",
+    "id": "70f80d27-8840-4d01-8202-f386aa921a42",
     "data": {
         "typeModel": {
             "aspectTypes": [
                 {
-                    "id": "debr.mecanico",
-                    "name": "mecanico",
-                    "description": "mecanico",
+                    "id": "debr.OEE",
+                    "name": "OEE",
+                    "description": "OEE",
                     "category": "dynamic",
-                    "referenceId": "mecanicoReferenceId",
+                    "referenceId": "OEEAspectReferenceId",
                     "variables": [
                         {
-                            "name": "velocidade",
+                            "name": "Good_Parts",
                             "dataType": "INT",
-                            "qualityCode": true,
-                            "unit": "m/s",
-                            "searchable": false,
-                            "referenceId": "velocidadeReferenceId"
-                        },
-                        {
-                            "name": "rpm",
-                            "dataType": "DOUBLE",
-                            "qualityCode": true,
-                            "unit": "rpm",
-                            "searchable": false,
-                            "referenceId": "rpmReferenceId"
-                        }
-                    ]
-                },
-                {
-                    "id": "debr.eletrico",
-                    "name": "eletrico",
-                    "description": "eletrico",
-                    "category": "dynamic",
-                    "referenceId": "eletricoReferenceId",
-                    "variables": [
-                        {
-                            "name": "corrente",
-                            "dataType": "INT",
-                            "qualityCode": true,
-                            "unit": "watts",
-                            "searchable": false,
-                            "referenceId": "correnteReferenceId"
-                        },
-                        {
-                            "name": "tempo_de_operacao",
-                            "dataType": "TIMESTAMP",
                             "qualityCode": true,
                             "unit": "",
                             "searchable": false,
-                            "referenceId": "tempo_de_operacaoReferenceId"
+                            "referenceId": "Good_PartsReferenceId"
                         }
                     ]
                 }
             ],
             "assetTypes": [
                 {
-                    "id": "debr.TypeMecanicoEEletrico",
-                    "name": "TypeMecanicoEEletrico",
-                    "description": "type",
+                    "id": "debr.Station_01",
+                    "name": "Station_01",
+                    "description": "Station",
                     "parentTypeId": "core.basicasset",
                     "variables": [],
-                    "referenceId": "TypeMecanicoEEletricoReferenceId",
+                    "referenceId": "Station_01TypeReferenceId",
                     "aspects": [
                         {
-                            "name": "mecanico",
-                            "aspectTypeId": "debr.mecanico",
-                            "referenceId": "mecanicoReferenceId"
-                        },
-                        {
-                            "name": "eletrico",
-                            "aspectTypeId": "debr.eletrico",
-                            "referenceId": "eletricoReferenceId"
+                            "name": "OEE",
+                            "aspectTypeId": "debr.OEE",
+                            "referenceId": "OEEReferenceId"
                         }
                     ]
                 }
@@ -80,43 +42,22 @@
         "instanceModel": {
             "assets": [
                 {
-                    "name": "AssetMecacnicoEEletrico",
-                    "typeId": "debr.TypeMecanicoEEletrico",
+                    "name": "AssetOEE",
+                    "typeId": "debr.Station_01",
                     "parentReferenceId": "e67bd43eccf94502b9679747b0d682dc",
-                    "description": "",
-                    "referenceId": "AssetMecacnicoEEletricoReferenceId"
+                    "description": "Station",
+                    "referenceId": "AssetOEEReferenceId"
                 }
             ]
         },
         "mappingModel": {
             "mappings": [
                 {
-                    "aspectName": "mecanico",
-                    "variableName": "velocidade",
-                    "dataPointId": "dataPoint1",
-                    "assetReferenceId": "AssetMecacnicoEEletricoReferenceId",
-                    "referenceId": "dataPoint1ReferenceId"
-                },
-                {
-                    "aspectName": "mecanico",
-                    "variableName": "rpm",
-                    "dataPointId": "dataPoint2",
-                    "assetReferenceId": "AssetMecacnicoEEletricoReferenceId",
-                    "referenceId": "dataPoint2ReferenceId"
-                },
-                {
-                    "aspectName": "eletrico",
-                    "variableName": "corrente",
-                    "dataPointId": "dataPoint3",
-                    "assetReferenceId": "AssetMecacnicoEEletricoReferenceId",
-                    "referenceId": "dataPoint3ReferenceId"
-                },
-                {
-                    "aspectName": "eletrico",
-                    "variableName": "tempo_de_operacao",
-                    "dataPointId": "dataPoint4",
-                    "assetReferenceId": "AssetMecacnicoEEletricoReferenceId",
-                    "referenceId": "dataPoint4ReferenceId"
+                    "aspectName": "OEE",
+                    "variableName": "Good_Parts",
+                    "dataPointId": "Good_Parts",
+                    "assetReferenceId": "AssetOEEReferenceId",
+                    "referenceId": "DP-Good_PartsReferenceId"
                 }
             ]
         }

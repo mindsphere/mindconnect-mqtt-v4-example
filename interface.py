@@ -37,7 +37,7 @@ def configurar_tenant():
     else:
         tenant = ""
 
-# Função para gerar mapeamentos
+# Ajustar mapeamentos para que o dataPointId seja igual ao nome da variável
 def gerar_mapeamentos():
     mappings = []
     asset_reference_ids = [asset["referenceId"] for asset in data_model["data"]["instanceModel"]["assets"]]
@@ -47,9 +47,9 @@ def gerar_mapeamentos():
                 mappings.append({
                     "aspectName": aspect["name"],
                     "variableName": variable["name"],
-                    "dataPointId": f"dataPoint{len(mappings) + 1}",
+                    "dataPointId": variable["name"],  # dataPointId é igual ao nome da variável
                     "assetReferenceId": asset_ref,
-                    "referenceId": f"dataPoint{len(mappings) + 1}ReferenceId"
+                    "referenceId": f"DP-{variable['name']}ReferenceId"
                 })
     data_model["data"]["mappingModel"]["mappings"] = mappings
     atualizar_json()
@@ -80,7 +80,7 @@ def adicionar_aspect():
             "name": aspect_id,
             "description": description,
             "category": "dynamic",
-            "referenceId": f"{aspect_id}ReferenceId",
+            "referenceId": f"{aspect_id}AspectReferenceId",
             "variables": variables
         }
         data_model["data"]["typeModel"]["aspectTypes"].append(aspect)
@@ -110,7 +110,7 @@ def adicionar_type():
             "description": description,
             "parentTypeId": "core.basicasset",
             "variables": [],
-            "referenceId": f"{type_id}ReferenceId",
+            "referenceId": f"{type_id}TypeReferenceId",
             "aspects": aspects
         }
         data_model["data"]["typeModel"]["assetTypes"].append(asset_type)
@@ -120,13 +120,14 @@ def adicionar_asset():
     asset_name = simpledialog.askstring("Adicionar Asset", "Digite o nome do Asset:")
     if asset_name:
         type_name = simpledialog.askstring("Adicionar Asset", "Digite o nome do Type:")
+        description = simpledialog.askstring("Adicionar Asset", "Digite a descrição do Asset:")
         asset_type = next((t for t in data_model["data"]["typeModel"]["assetTypes"] if t["name"] == type_name), None)
         if asset_type:
             asset = {
                 "name": asset_name,
                 "typeId": asset_type["id"],
                 "parentReferenceId": "e67bd43eccf94502b9679747b0d682dc",
-                "description": "",
+                "description": description or "",
                 "referenceId": f"{asset_name}ReferenceId"
             }
             data_model["data"]["instanceModel"]["assets"].append(asset)
@@ -135,7 +136,7 @@ def adicionar_asset():
             messagebox.showinfo("Erro", "Type não encontrado.")
 
 def atualizar_json():
-    with open('dados.json', 'w') as json_file:
+    with open('mqttv4\dados.json', 'w') as json_file:
         json.dump(data_model, json_file, indent=4)
     print("JSON atualizado.")
 
@@ -144,7 +145,7 @@ def enviar_mensagem():
     print("Mensagem enviada via MQTT.")
 
 def visualizar_json():
-    with open('dados.json', 'r') as json_file:
+    with open('mqttv4\dados.json', 'r') as json_file:
         preview = json.load(json_file)
     preview_window = tk.Toplevel(root)
     preview_window.title("Preview do JSON")
