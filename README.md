@@ -1,10 +1,9 @@
-# YT video: [https://www.youtube.com/watch?v=YLYDDjMH9fY](https://www.youtube.com/watch?v=YLYDDjMH9fY)
+# MindConnect MQTT v4 - Application Example
 
-# EN-US 🇺🇸
+YT video: [https://www.youtube.com/watch?v=YLYDDjMH9fY](https://www.youtube.com/watch?v=YLYDDjMH9fY)
 
-# JSON Editor and Publisher via MQTT
-
-## 📋 Project Description
+## 📋 Project Description - JSON Editor and Publisher via MQTT
+=======
 
 This project is an interactive Python application that enables the creation, editing, and management of complex **JSONs** based on a hierarchical structure, including aspects, types, and assets. It also allows the sending of the generated **JSON** to an **MQTT** broker with TLS certificate authentication, and viewing messages received from a subscribed topic.
 
@@ -114,7 +113,11 @@ This project uses:
    - Make sure that there are correctly configured aspects, types, and assets before generating mappings.
 -----------------------------------------------------------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+# PT-BR 
+=======
 # PT-BR 🇧🇷
+>>>>>>> 79892fea490e807f4b82cc2427e3e0e53abb5458
 # Editor e Publicador de JSON via MQTT
 
 ## 📋 Descrição do Projeto
@@ -224,4 +227,8 @@ Este projeto usa:
    - Certifique-se de que os certificados no diretório `mqttv4/certs/` são válidos.
 
 2. **Erro ao Gerar Mapeamentos**:
+<<<<<<< HEAD
    - Certifique-se de que há aspectos, tipos e ativos corretamente configurados antes de gerar os mapeamentos.
+=======
+   - Certifique-se de que há aspectos, tipos e ativos corretamente configurados antes de gerar os mapeamentos.
+>>>>>>> 79892fea490e807f4b82cc2427e3e0e53abb5458
