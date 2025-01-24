@@ -3,7 +3,6 @@
 YT video: [https://www.youtube.com/watch?v=YLYDDjMH9fY](https://www.youtube.com/watch?v=YLYDDjMH9fY)
 
 ## 📋 Project Description - JSON Editor and Publisher via MQTT
-=======
 
 This project is an interactive Python application that enables the creation, editing, and management of complex **JSONs** based on a hierarchical structure, including aspects, types, and assets. It also allows the sending of the generated **JSON** to an **MQTT** broker with TLS certificate authentication, and viewing messages received from a subscribed topic.
 
